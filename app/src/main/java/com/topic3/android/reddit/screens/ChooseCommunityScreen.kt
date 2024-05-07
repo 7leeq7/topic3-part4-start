@@ -86,15 +86,14 @@ fun SearchedCommunities(
     viewModel: MainViewModel?,
     modifier: Modifier = Modifier
 ) {
-    communities.forEach {
-        Community(
-            text = it,
-            modifier = modifier,
-            onCommunityClicked = {
-                viewModel?.selectedCommunity?.postValue(it)
-                RedditRouter.goBack()
-            }
-        )
+    communities.forEach { Community(
+        text = it,
+        modifier = modifier,
+        onCommunityClicked = {
+            viewModel?.selectedCommunity?.postValue(it)
+            RedditRouter.goBack()
+        }
+    )
     }
 }
 
@@ -128,4 +127,15 @@ fun ChooseCommunityTopBar(modifier: Modifier = Modifier) {
             .height(48.dp)
             .background(Color.Blue)
     )
+}
+@Preview
+@Composable
+fun SearchedCommunitiesPreview() {
+    Column {
+        SearchedCommunities(
+            defaultCommunities,
+            null,
+            Modifier
+        )
+    }
 }
